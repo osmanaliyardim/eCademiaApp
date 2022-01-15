@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\eCademiaApp.Core\eCademiaApp.Core.csproj" />
+  </ItemGroup>
+
 </Project>
