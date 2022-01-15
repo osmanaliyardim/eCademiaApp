@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCademiaApp.Entities", "eCademiaApp.Entities\eCademiaApp.Entities.csproj", "{8A19D39E-8EC3-4D19-BB46-539AF9EC6E19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCademiaApp.Entities", "eCademiaApp.Entities\eCademiaApp.Entities.csproj", "{14D6570A-8228-4005-9E0D-7E2C25B30324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A19D39E-8EC3-4D19-BB46-539AF9EC6E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A19D39E-8EC3-4D19-BB46-539AF9EC6E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A19D39E-8EC3-4D19-BB46-539AF9EC6E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A19D39E-8EC3-4D19-BB46-539AF9EC6E19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D6570A-8228-4005-9E0D-7E2C25B30324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D6570A-8228-4005-9E0D-7E2C25B30324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D6570A-8228-4005-9E0D-7E2C25B30324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D6570A-8228-4005-9E0D-7E2C25B30324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
