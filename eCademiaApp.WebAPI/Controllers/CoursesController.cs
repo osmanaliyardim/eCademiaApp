@@ -61,7 +61,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
 
-        [HttpPost("add")]
+        [HttpPost("add")] 
         public IActionResult Add(Course course)
         {
             var result = _courseService.Add(course);
@@ -70,7 +70,7 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")] //HttpPost
         public IActionResult Update(Course course)
         {
             var result = _courseService.Update(course);
@@ -79,7 +79,7 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("delete")]
+        [HttpDelete("delete")] //HttpPost
         public IActionResult Delete(Course course)
         {
             var result = _courseService.Delete(course);

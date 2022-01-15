@@ -1,6 +1,8 @@
 ﻿using Core.Utilities.Results;
 using eCademiaApp.Business.Abstract;
 using eCademiaApp.Business.Constants;
+using eCademiaApp.Business.ValidationRules.FluentValidation;
+using eCademiaApp.Core.Aspects.Validation;
 using eCademiaApp.DataAccess.Abstract;
 using eCademiaApp.Entities.Concrete;
 using eCademiaApp.Entities.DTOs;
@@ -16,6 +18,7 @@ namespace eCademiaApp.Business.Concrete
             _courseDal = courseDal;
         }
 
+        [ValidationAspect(typeof(CourseValidator))]
         public IResult Add(Course course)
         {
             _courseDal.Add(course);
@@ -55,6 +58,7 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(i => i.TypeId == typeId));
         }
 
+        [ValidationAspect(typeof(CourseValidator))]
         public IResult Update(Course course)
         {
             _courseDal.Update(course);

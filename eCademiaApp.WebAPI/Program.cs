@@ -29,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureCustomExceptionMiddleware(); // eCademiaApp.Core.Extensions
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
