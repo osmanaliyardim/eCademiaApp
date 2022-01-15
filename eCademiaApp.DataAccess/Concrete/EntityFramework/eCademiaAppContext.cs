@@ -19,8 +19,9 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=eCademiaAppDB;Trusted_Connection=true");
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-3GMD0GL\SQLEXPRESS;Database=dbname;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-3GMD0GL\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true", 
+                builder => builder.EnableRetryOnFailure());
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-3GMD0GL\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true");
         }
     }
 }
