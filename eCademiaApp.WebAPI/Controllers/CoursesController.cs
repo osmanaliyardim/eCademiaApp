@@ -65,7 +65,7 @@ namespace eCademiaApp.WebAPI.Controllers
         public IActionResult Add(Course course)
         {
             var result = _courseService.Add(course);
-            if (result.Success) return Ok(result);
+            if (result.Success) return Ok(result); // TODO : 201 Created
 
             return BadRequest(result);
         }

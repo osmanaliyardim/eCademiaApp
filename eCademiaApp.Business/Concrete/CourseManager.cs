@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using eCademiaApp.Business.Abstract;
+using eCademiaApp.Business.BusinessAspects.Autofac;
 using eCademiaApp.Business.Constants;
 using eCademiaApp.Business.ValidationRules.FluentValidation;
 using eCademiaApp.Core.Aspects.Validation;
@@ -18,6 +19,7 @@ namespace eCademiaApp.Business.Concrete
             _courseDal = courseDal;
         }
 
+        [SecuredOperation("course.add,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
         public IResult Add(Course course)
         {
@@ -26,6 +28,7 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessResult(Messages.CourseAdded);
         }
 
+        [SecuredOperation("course.delete,moderator,admin")]
         public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
@@ -58,6 +61,7 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(i => i.TypeId == typeId));
         }
 
+        [SecuredOperation("course.update,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
         public IResult Update(Course course)
         {
