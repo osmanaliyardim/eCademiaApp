@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCademiaApp.Entities", "eCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCademiaApp.Core", "eCademiaApp.Core\eCademiaApp.Core.csproj", "{C0FC9F3A-4072-41BC-9C94-1D89511E426D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCademiaApp.DataAccess", "eCademiaApp.DataAccess\eCademiaApp.DataAccess.csproj", "{99E2A1CE-57A5-4647-B2E0-A2904E6EDF03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCademiaApp.DataAccess", "eCademiaApp.DataAccess\eCademiaApp.DataAccess.csproj", "{99E2A1CE-57A5-4647-B2E0-A2904E6EDF03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCademiaApp.Business", "eCademiaApp.Business\eCademiaApp.Business.csproj", "{F6213947-7611-49C5-B109-A5D5C544935E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{99E2A1CE-57A5-4647-B2E0-A2904E6EDF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99E2A1CE-57A5-4647-B2E0-A2904E6EDF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99E2A1CE-57A5-4647-B2E0-A2904E6EDF03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6213947-7611-49C5-B109-A5D5C544935E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6213947-7611-49C5-B109-A5D5C544935E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6213947-7611-49C5-B109-A5D5C544935E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6213947-7611-49C5-B109-A5D5C544935E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

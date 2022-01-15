@@ -1,11 +1,10 @@
 ﻿using Core.DataAccess.EntityFramework;
 using eCademiaApp.DataAccess.Abstract;
-using eCademiaApp.DataAccess.Concrete.EntityFramework;
 using eCademiaApp.Entities.Concrete;
 using eCademiaApp.Entities.DTOs;
 using System.Linq.Expressions;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace eCademiaApp.DataAccess.Concrete.EntityFramework
 {
     public class EfCourseDal : EfEntityRepositoryBase<Course, eCademiaAppContext>, ICourseDal
     {
