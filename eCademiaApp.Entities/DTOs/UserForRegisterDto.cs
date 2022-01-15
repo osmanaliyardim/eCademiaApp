@@ -1,6 +1,8 @@
-﻿namespace eCademiaApp.Entities.DTOs
+﻿using Core.Entities;
+
+namespace eCademiaApp.Entities.DTOs
 {
-    class UserForRegisterDto
+    public class UserForRegisterDto : IDto
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace eCademiaApp.Entities.Concrete
+﻿using Core.Entities;
+
+namespace eCademiaApp.Entities.Concrete
 {
-    public class CreditCard
+    public class CreditCard : IEntity
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }

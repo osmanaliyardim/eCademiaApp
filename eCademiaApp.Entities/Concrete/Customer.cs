@@ -1,6 +1,8 @@
-﻿namespace eCademiaApp.Entities.Concrete
+﻿using Core.Entities;
+
+namespace eCademiaApp.Entities.Concrete
 {
-    public class Customer
+    public class Customer : IEntity
     {
         public int Id { get; set; }
         public int UserId { get; set; }

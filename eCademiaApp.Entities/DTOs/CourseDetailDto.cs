@@ -1,6 +1,8 @@
-﻿namespace eCademiaApp.Entities.DTOs
+﻿using Core.Entities;
+
+namespace eCademiaApp.Entities.DTOs
 {
-    public class CourseDetailDto
+    public class CourseDetailDto : IDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

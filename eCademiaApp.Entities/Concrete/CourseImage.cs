@@ -1,6 +1,8 @@
-﻿namespace eCademiaApp.Entities.Concrete
+﻿using Core.Entities;
+
+namespace eCademiaApp.Entities.Concrete
 {
-    public class CourseImage
+    public class CourseImage : IEntity
     {
         public int Id { get; set; }
         public int CourseId { get; set; }

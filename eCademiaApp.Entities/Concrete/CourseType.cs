@@ -1,6 +1,8 @@
-﻿namespace eCademiaApp.Entities.Concrete
+﻿using Core.Entities;
+
+namespace eCademiaApp.Entities.Concrete
 {
-    public class CourseType
+    public class CourseType : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
