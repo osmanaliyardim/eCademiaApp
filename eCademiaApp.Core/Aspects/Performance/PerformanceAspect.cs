@@ -17,17 +17,19 @@ namespace eCademiaApp.Core.Aspects.Performance
             _stopwatch = ServiceTool.ServiceProvider.GetService<Stopwatch>();
         }
 
+        // Starting timer before method is executed
         protected override void OnBefore(IInvocation invocation)
         {
             _stopwatch.Start();
         }
 
+        // If total time exceed default performance metrics returns controllerName.methodName -> secs passed
         protected override void OnAfter(IInvocation invocation)
         {
             if (_stopwatch.Elapsed.TotalSeconds > _interval)
                 Debug.WriteLine(
                     $"Performance : {invocation.Method.DeclaringType.FullName}.{invocation.Method.Name}-->{_stopwatch.Elapsed.TotalSeconds}");
-            _stopwatch.Reset();
+            _stopwatch.Reset(); // Resetting timer
         }
     }
 }

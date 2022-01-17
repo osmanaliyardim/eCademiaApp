@@ -2,6 +2,7 @@
 
 namespace eCademiaApp.Entities.DTOs
 {
+    // DB View (joined table) for User Update
     public class UserDetailForUpdateDto : IDto
     {
         public int Id { get; set; }

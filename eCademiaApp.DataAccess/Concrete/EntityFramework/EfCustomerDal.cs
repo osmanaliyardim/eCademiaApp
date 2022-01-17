@@ -4,6 +4,7 @@ using eCademiaApp.Entities.Concrete;
 
 namespace eCademiaApp.DataAccess.Concrete.EntityFramework
 {
+    // Repository pattern implementation for Customers with EntityFramework
     public class EfCustomerDal : EfEntityRepositoryBase<Customer, eCademiaAppContext>, ICustomerDal
     {
     }

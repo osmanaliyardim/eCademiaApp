@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace eCademiaApp.Core.DependencyResolvers
 {
+    // Autofac dependency resolver configurations for core layer
     public class CoreModule : ICoreModule
     {
         public void Load(IServiceCollection serviceCollection)

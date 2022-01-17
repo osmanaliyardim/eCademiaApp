@@ -1,5 +1,6 @@
 ﻿namespace eCademiaApp.Business.Constants
 {
+    // Constant system messages for result system
     public static class Messages
     {
         public static string MaintenanceTime = "The system is under maintenance.";

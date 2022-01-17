@@ -2,6 +2,7 @@
 
 namespace eCademiaApp.Entities.Concrete
 {
+    // DB Table class for CreditCard
     public class CreditCard : IEntity
     {
         public int Id { get; set; }

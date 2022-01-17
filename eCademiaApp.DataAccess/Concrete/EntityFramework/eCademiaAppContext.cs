@@ -4,8 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCademiaApp.DataAccess.Concrete.EntityFramework
 {
+    // Setting DB configuration with EF
     public class eCademiaAppContext : DbContext
     {
+        // Setting DB Tables
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseImage> CourseImages { get; set; }
         public DbSet<CourseType> CourseTypes { get; set; }
@@ -17,6 +19,7 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
+        // Connecting to DB
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-3GMD0GL\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true",

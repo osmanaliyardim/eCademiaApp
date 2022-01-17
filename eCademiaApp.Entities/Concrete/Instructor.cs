@@ -2,6 +2,7 @@
 
 namespace eCademiaApp.Entities.Concrete
 {
+    // DB Table class for Instructor
     public class Instructor : IEntity
     {
         public int Id { get; set; }        

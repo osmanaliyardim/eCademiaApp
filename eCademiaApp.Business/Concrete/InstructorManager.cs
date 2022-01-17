@@ -8,25 +8,32 @@ namespace eCademiaApp.Business.Concrete
 {
     public class InstructorManager
     {
+        // Injectable services
         private readonly IInstructorDal _instructorDal;
 
+        // Injecting our services to establish a loosely coupled connection
         public InstructorManager(IInstructorDal instructorDal)
         {
             _instructorDal = instructorDal;
         }
 
-        [SecuredOperation("customer.view,admin")]
+        /// <summary>This method returns a specific instructor by id.</summary>
+        /// <param name="id">instructor id</param>
+        [SecuredOperation("instructor.view,admin")]
         public IDataResult<Instructor> GetById(int id)
         {
             return new SuccessDataResult<Instructor>(_instructorDal.Get(c => c.Id == id));
         }
 
-        [SecuredOperation("customer.view,admin")]
+        /// <summary>This method returns all instructors.</summary>
+        [SecuredOperation("instructor.view,admin")]
         public IDataResult<List<Instructor>> GetAll()
         {
             return new SuccessDataResult<List<Instructor>>(_instructorDal.GetAll());
         }
 
+        /// <summary>This method saves a instructor to DB.</summary>
+        /// <param name="Instructor">instructor object</param>
         public IResult Add(Instructor instructor)
         {
             _instructorDal.Add(instructor);
@@ -34,7 +41,9 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessResult(Messages.InstructorAdded);
         }
 
-        [SecuredOperation("customer.update,admin")]
+        /// <summary>This method updates a specific instructor from DB.</summary>
+        /// <param name="instructor">instructor object</param>
+        [SecuredOperation("instructor.update,admin")]
         public IResult Update(Instructor instructor)
         {
             _instructorDal.Update(instructor);
@@ -42,7 +51,9 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessResult(Messages.InstructorUpdated);
         }
 
-        [SecuredOperation("customer.delete,admin")]
+        /// <summary>This method removes a specific instructor from DB.</summary>
+        /// <param name="Instructor">instructor object</param>
+        [SecuredOperation("instructor.delete,admin")]
         public IResult Delete(Instructor instructor)
         {
             _instructorDal.Delete(instructor);

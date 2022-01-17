@@ -1,5 +1,6 @@
 ﻿namespace Core.Entities.Concrete
 {
+    // DB Table class for User
     public class User : IEntity
     {
         public int Id { get; set; }

@@ -3,6 +3,7 @@ using eCademiaApp.Entities.Concrete;
 
 namespace eCademiaApp.Business.Abstract
 {
+    // Instructor methods as a service to use them from different places with loosely coupling structure
     public interface IInstructorService
     {
         IDataResult<Instructor> GetById(int id);

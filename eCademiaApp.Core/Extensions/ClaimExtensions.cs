@@ -3,6 +3,7 @@ using System.Security.Claims;
 
 namespace eCademiaApp.Core.Extensions
 {
+    // Extend claims to automate adding email, name, nameIdentifier and roles.
     public static class ClaimExtensions
     {
         public static void AddEmail(this ICollection<Claim> claims, string email)

@@ -5,8 +5,10 @@ using eCademiaApp.Entities.DTOs;
 
 namespace eCademiaApp.DataAccess.Concrete.EntityFramework
 {
+    // Repository pattern implementation for Users with EntityFramework
     public class EfUserDal : EfEntityRepositoryBase<User, eCademiaAppContext>, IUserDal
     {
+        // Adding extra method to return user claims (joining tables)
         public List<OperationClaim> GetClaims(User user)
         {
             using (var context = new eCademiaAppContext())
@@ -20,6 +22,7 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
             }
         }
 
+        // Adding extra method to return user details (joining tables)
         public UserDetailDto GetUserDetail(string userMail)
         {
             using (var context = new eCademiaAppContext())

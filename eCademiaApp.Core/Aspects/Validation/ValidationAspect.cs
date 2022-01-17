@@ -5,6 +5,7 @@ using FluentValidation;
 
 namespace eCademiaApp.Core.Aspects.Validation
 {
+    // Validation implementation as AOP design
     public class ValidationAspect : MethodInterception
     {
         private readonly Type _validatorType;
@@ -17,6 +18,7 @@ namespace eCademiaApp.Core.Aspects.Validation
             _validatorType = validatorType;
         }
 
+        // Implementing validation with FluentValidation before method is executed
         protected override void OnBefore(IInvocation invocation)
         {
             var validator = (IValidator)Activator.CreateInstance(_validatorType);

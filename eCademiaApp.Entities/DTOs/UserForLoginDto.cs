@@ -2,6 +2,7 @@
 
 namespace eCademiaApp.Entities.DTOs
 {
+    // DB View (joined table) for User Login
     public class UserForLoginDto : IDto
     {
         public string Email { get; set; }

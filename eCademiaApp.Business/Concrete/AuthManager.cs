@@ -9,14 +9,16 @@ using eCademiaApp.Entities.Concrete;
 using eCademiaApp.Entities.DTOs;
 
 namespace eCademiaApp.Business.Concrete
-{
+{   
     public class AuthManager : IAuthService
     {
+        // Injectable services
         private readonly ICustomerService _customerService;
         private readonly ITokenHelper _tokenHelper;
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IUserService _userService;
 
+        // Injecting our services to establish a loosely coupled connection
         public AuthManager(IUserService userService, ITokenHelper tokenHelper,
             IUserOperationClaimService userOperationClaimService, ICustomerService customerService)
         {
@@ -26,10 +28,12 @@ namespace eCademiaApp.Business.Concrete
             _customerService = customerService;
         }
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
+        /// <summary>This method saves user information to DB.</summary>
+        /// <param name="UserForRegisterDto">joined registration table</param>
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
             var newUser = new User
             {
                 Email = userForRegisterDto.Email,
@@ -48,6 +52,8 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
 
+        /// <summary>This method lets user to sign in.</summary>
+        /// <param name="UserForLoginDto">joined login table</param>
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheckResult = _userService.GetByMail(userForLoginDto.Email);
@@ -62,6 +68,8 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 
+        /// <summary>This method checks if user already exists.</summary>
+        /// <param name="email">user email</param>
         public IResult UserExists(string email)
         {
             var userResult = _userService.GetByMail(email);
@@ -71,6 +79,8 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessResult();
         }
 
+        /// <summary>This method creates an access and refresh token for a user.</summary>
+        /// <param name="User">user object/table</param>
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claimsResult = _userService.GetClaims(user);
@@ -80,6 +90,9 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
+        /// <summary>This method checks does user have required roles or not.</summary>
+        /// <param name="userMail">user email</param>
+        /// <param name="requiredRoles">list of roles</param>
         [SecuredOperation("user")]
         public IResult IsAuthenticated(string userMail, List<string> requiredRoles)
         {

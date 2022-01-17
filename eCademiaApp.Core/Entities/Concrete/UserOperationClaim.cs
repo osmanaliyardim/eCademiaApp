@@ -1,5 +1,6 @@
 ﻿namespace Core.Entities.Concrete
 {
+    // DB Table class for UserOperationClaim
     public class UserOperationClaim : IEntity
     {
         public int Id { get; set; }

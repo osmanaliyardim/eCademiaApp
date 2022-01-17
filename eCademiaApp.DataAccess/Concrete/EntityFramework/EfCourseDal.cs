@@ -6,9 +6,11 @@ using System.Linq.Expressions;
 
 namespace eCademiaApp.DataAccess.Concrete.EntityFramework
 {
+    // Repository pattern implementation for Courses with EntityFramework
     public class EfCourseDal : EfEntityRepositoryBase<Course, eCademiaAppContext>, ICourseDal
     {
-        public List<CourseDetailDto> GetCourseDetails(Expression<Func<CourseDetailDto, bool>> filter = null)
+        // Adding extra method to return course details (joining tables)
+        public List<CourseDetailDto> GetCourseDetails(Expression<Func<CourseDetailDto, bool>> filter = null) //TODO: Can be upgraded with Automapper
         {
             using (var context = new eCademiaAppContext())
             {

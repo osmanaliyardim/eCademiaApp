@@ -5,9 +5,10 @@ using eCademiaApp.Entities.DTOs;
 
 namespace eCademiaApp.Business.Abstract
 {
+    // Auth methods as a service to use them from different places with loosely coupling structure
     public interface IAuthService
     {
-        IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password);
+        IDataResult<User> Register(UserForRegisterDto userForRegisterDto);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
         IResult UserExists(string email);
         IDataResult<AccessToken> CreateAccessToken(User user);

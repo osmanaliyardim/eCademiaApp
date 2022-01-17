@@ -12,10 +12,12 @@ using Autofac.Extras.DynamicProxy;
 
 namespace eCademiaApp.Business.DependencyResolvers.Autofac
 {
+    // Autofac implementation to resolve dependencies
     public class AutofacBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
+            // Setting a concrete class for each interface
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
 
             builder.RegisterType<CourseManager>().As<ICourseService>().SingleInstance();
@@ -35,7 +37,6 @@ namespace eCademiaApp.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
 
-            // TODO: .enableinterfaceinterceptors error
             var assembly = Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly)
                 .AsImplementedInterfaces()

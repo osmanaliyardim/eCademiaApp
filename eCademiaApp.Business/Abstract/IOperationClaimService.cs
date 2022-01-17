@@ -3,6 +3,7 @@ using Core.Utilities.Results;
 
 namespace eCademiaApp.Business.Abstract
 {
+    // OperationClaim methods as a service to use them from different places with loosely coupling structure
     public interface IOperationClaimService
     {
         IDataResult<OperationClaim> GetById(int id);

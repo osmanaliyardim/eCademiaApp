@@ -5,6 +5,7 @@ using System.Net;
 
 namespace eCademiaApp.Core.Extensions
 {
+    // Exception middleware to handle errors on global scope.
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;

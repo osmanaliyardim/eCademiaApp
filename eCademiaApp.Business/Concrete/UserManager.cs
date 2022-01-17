@@ -11,42 +11,57 @@ namespace eCademiaApp.Business.Concrete
 {
     public class UserManager : IUserService
     {
+        // Injectable services
         private readonly ICustomerDal _customerDal;
         private readonly IUserDal _userDal;
+        private readonly IInstructorDal _instructorDal;
 
-        public UserManager(ICustomerDal customerDal, IUserDal userDal)
+        // Injecting our services to establish a loosely coupled connection
+        public UserManager(ICustomerDal customerDal, IUserDal userDal, IInstructorDal instructorDal)
         {
             _customerDal = customerDal;
             _userDal = userDal;
+            _instructorDal = instructorDal;
         }
 
+        /// <summary>This method returns a specific user by id.</summary>
+        /// <param name="id">user id</param>
         [SecuredOperation("user.view,admin")]
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id));
         }
 
+        /// <summary>This method returns all of users claims.</summary>
+        /// <param name="User">user object</param>
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
         }
 
+        /// <summary>This method returns a specific user by email.</summary>
+        /// <param name="email">user email</param>
         public IDataResult<User> GetByMail(string email)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
         }
 
+        /// <summary>This method returns a specific user detail by email.</summary>
+        /// <param name="email">user email</param>
         public IDataResult<UserDetailDto> GetUserDetailByMail(string userMail)
         {
             return new SuccessDataResult<UserDetailDto>(_userDal.GetUserDetail(userMail));
         }
 
+        /// <summary>This method returns all users.</summary>
         [SecuredOperation("user.view,admin")]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
+        /// <summary>This method saves a user to DB.</summary>
+        /// <param name="User">user object</param>
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -54,6 +69,8 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
+        /// <summary>This method updates a specific user from DB.</summary>
+        /// <param name="User">user object</param>
         [SecuredOperation("user.update,admin")]
         public IResult Update(User user)
         {
@@ -62,6 +79,8 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessResult(Messages.UserUpdated);
         }
 
+        /// <summary>This method updates a specific user from DB.</summary>
+        /// <param name="UserDetailForUpdateDto">user details for update joined table</param>
         [SecuredOperation("user")]
         public IResult UpdateUserDetails(UserDetailForUpdateDto userDetailForUpdate)
         {
@@ -86,9 +105,15 @@ namespace eCademiaApp.Business.Concrete
             customer.CompanyName = userDetailForUpdate.CompanyName;
             _customerDal.Update(customer);
 
+            var instructor = _instructorDal.Get(i => i.Id == userDetailForUpdate.InstructorId);
+            instructor.CompanyName = userDetailForUpdate.CompanyName;
+            _instructorDal.Update(instructor);
+
             return new SuccessResult(Messages.UserDetailsUpdated);
         }
 
+        /// <summary>This method removes a specific user from DB.</summary>
+        /// <param name="User">user object</param>
         [SecuredOperation("user.delete,admin")]
         public IResult Delete(User user)
         {

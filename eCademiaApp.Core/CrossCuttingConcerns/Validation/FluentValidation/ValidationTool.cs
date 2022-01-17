@@ -2,8 +2,12 @@
 
 namespace eCademiaApp.Core.CrossCuttingConcerns.Validation.FluentValidation
 {
+    // Validation tool to automize FluentValidation operations
     public static class ValidationTool
     {
+        /// <summary>This method validates entity.</summary>
+        /// <param name="IValidator">validator object from FluentValidator</param>
+        /// <param name="object">entity object to check</param>
         public static void Validate(IValidator validator, object entity)
         {
             var context = new ValidationContext<object>(entity);

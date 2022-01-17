@@ -4,6 +4,7 @@ using eCademiaApp.Entities.DTOs;
 
 namespace eCademiaApp.Business.Abstract
 {
+    // Course methods as a service to use them from different places with loosely coupling structure
     public interface ICourseService
     {
         IDataResult<Course> GetById(int id);

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace eCademiaApp.Core.Extensions
 {
+    // Error detail entity for exception handling
     public class ErrorDetails
     {
         public string Message { get; set; }
