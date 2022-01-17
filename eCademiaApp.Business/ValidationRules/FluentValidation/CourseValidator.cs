@@ -7,7 +7,7 @@ namespace eCademiaApp.Business.ValidationRules.FluentValidation
     {
         public CourseValidator()
         {
-            RuleFor(c => c.Name).MinimumLength(10).MaximumLength(50).WithMessage("Course name must contains between 10-50 characters.");
+            RuleFor(c => c.Name).MinimumLength(10).MaximumLength(50).WithMessage("Course name must contain between 10-50 characters.");
             RuleFor(c => c.Name).NotNull().WithMessage("Course name can not be null.");
             RuleFor(c => c.Price).NotNull().WithMessage("Price can not be null.");
             RuleFor(c => c.Price).GreaterThan(0).WithMessage("Price can not set as under 0.");

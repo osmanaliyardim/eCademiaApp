@@ -3,11 +3,12 @@ using eCademiaApp.Business.Concrete;
 using eCademiaApp.DataAccess.Concrete.EntityFramework;
 using eCademiaApp.DataAccess.Abstract;
 using eCademiaApp.Core.Utilities.Interceptors;
+using eCademiaApp.Core.Utilities.Security.JWT;
 using System.Reflection;
 using Autofac;
 using Module = Autofac.Module;
-using eCademiaApp.Core.Utilities.Security.JWT;
 using Castle.DynamicProxy;
+using Autofac.Extras.DynamicProxy;
 
 namespace eCademiaApp.Business.DependencyResolvers.Autofac
 {
@@ -35,11 +36,11 @@ namespace eCademiaApp.Business.DependencyResolvers.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
 
             // TODO: .enableinterfaceinterceptors error
-            //var assembly = Assembly.GetExecutingAssembly();
-            //builder.RegisterAssemblyTypes(assembly)
-            //    .AsImplementedInterfaces()
-            //    .EnableInterfaceInterceptors(new ProxyGenerationOptions { Selector = new AspectInterceptorSelector() })
-            //    .SingleInstance();
+            var assembly = Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(assembly)
+                .AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions { Selector = new AspectInterceptorSelector() })
+                .SingleInstance();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Castle.Core.Interceptor;
+﻿using Castle.DynamicProxy;
 using eCademiaApp.Business.Constants;
 using eCademiaApp.Core.Extensions;
 using eCademiaApp.Core.Utilities.Interceptors;

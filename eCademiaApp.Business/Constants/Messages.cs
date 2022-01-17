@@ -34,5 +34,9 @@
         public static string UserOperationClaimAdded = "User operation claim has been successfully added.";
         public static string UserOperationClaimUpdated = "User operation claim has been successfully updated.";
         public static string UserOperationClaimDeleted = "User operation claim has been successfully deleted.";
+
+        public static string InstructorAdded = "Instructor has been successfully added.";
+        public static string InstructorUpdated = "Instructor has been successfully updated.";
+        public static string InstructorDeleted = "Instructor has been successfully deleted.";
     }
 }

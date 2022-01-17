@@ -1,8 +1,8 @@
-﻿using Castle.Core.Interceptor;
-using eCademiaApp.Core.Utilities.Interceptors;
+﻿using eCademiaApp.Core.Utilities.Interceptors;
 using eCademiaApp.Core.Utilities.IoC;
 using System.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
+using Castle.DynamicProxy;
 
 namespace eCademiaApp.Core.Aspects.Performance
 {
@@ -16,7 +16,6 @@ namespace eCademiaApp.Core.Aspects.Performance
             _interval = interval;
             _stopwatch = ServiceTool.ServiceProvider.GetService<Stopwatch>();
         }
-
 
         protected override void OnBefore(IInvocation invocation)
         {

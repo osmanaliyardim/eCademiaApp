@@ -21,7 +21,7 @@ namespace eCademiaApp.WebAPI.Controllers
             var result = _courseService.GetById(id);
             if (result.Success) return Ok(result);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getAll")]
@@ -30,7 +30,7 @@ namespace eCademiaApp.WebAPI.Controllers
             var result = _courseService.GetAll();
             if (result.Success) return Ok(result);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getCourseDetails")]
@@ -39,7 +39,7 @@ namespace eCademiaApp.WebAPI.Controllers
             var result = _courseService.GetCourseDetails();
             if (result.Success) return Ok(result);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getCoursesByTypeId")]
@@ -48,7 +48,7 @@ namespace eCademiaApp.WebAPI.Controllers
             var result = _courseService.GetCoursesByTypeId(typeId);
             if (result.Success) return Ok(result);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getCoursesByInstructorId")]
@@ -57,35 +57,35 @@ namespace eCademiaApp.WebAPI.Controllers
             var result = _courseService.GetCoursesByInstructorId(instructorId);
             if (result.Success) return Ok(result);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
 
         [HttpPost("add")] 
         public IActionResult Add(Course course)
         {
-            var result = _courseService.Add(course);
-            if (result.Success) return Ok(result); // TODO : 201 Created
+            var result = _courseService.Add(course); 
+            if (result.Success) return Created("", result.Message); // Ok(result.Message);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
-        [HttpPut("update")] //HttpPost
+        [HttpPost("update")]
         public IActionResult Update(Course course)
         {
             var result = _courseService.Update(course);
-            if (result.Success) return Ok(result);
+            if (result.Success) return Ok(result.Message);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
-        [HttpDelete("delete")] //HttpPost
+        [HttpPost("delete")]
         public IActionResult Delete(Course course)
         {
             var result = _courseService.Delete(course);
-            if (result.Success) return Ok(result);
+            if (result.Success) return Ok(result.Message);
 
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
     }
 }

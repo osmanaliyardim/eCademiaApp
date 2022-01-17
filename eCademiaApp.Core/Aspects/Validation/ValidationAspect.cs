@@ -1,4 +1,4 @@
-﻿using Castle.Core.Interceptor;
+﻿using Castle.DynamicProxy;
 using eCademiaApp.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using eCademiaApp.Core.Utilities.Interceptors;
 using FluentValidation;

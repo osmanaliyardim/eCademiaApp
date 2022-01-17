@@ -1,4 +1,4 @@
-﻿using Castle.Core.Interceptor;
+﻿using Castle.DynamicProxy;
 using eCademiaApp.Core.Aspects.Performance;
 using System.Reflection;
 
@@ -13,7 +13,7 @@ namespace eCademiaApp.Core.Utilities.Interceptors
             var methodAttributes = type.GetMethod(method.Name)
                 .GetCustomAttributes<MethodInterceptionBaseAttribute>(true);
             classAttributes.AddRange(methodAttributes);
-            classAttributes.Add(new PerformanceAspect(5));
+            //classAttributes.Add(new PerformanceAspect(5)); //TODO : performance unavailable
 
             return classAttributes.OrderBy(x => x.Priority).ToArray();
         }

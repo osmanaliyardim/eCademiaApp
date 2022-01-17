@@ -2,6 +2,8 @@
 using eCademiaApp.Business.Abstract;
 using eCademiaApp.Business.BusinessAspects.Autofac;
 using eCademiaApp.Business.Constants;
+using eCademiaApp.Business.ValidationRules.FluentValidation;
+using eCademiaApp.Core.Aspects.Validation;
 using eCademiaApp.DataAccess.Abstract;
 using eCademiaApp.Entities.Concrete;
 
@@ -11,9 +13,9 @@ namespace eCademiaApp.Business.Concrete
     {
         private readonly ICustomerDal _customerDal;
 
-        public CustomerManager(ICustomerDal customerManager)
+        public CustomerManager(ICustomerDal customerDal)
         {
-            _customerDal = customerManager;
+            _customerDal = customerDal;
         }
 
         [SecuredOperation("customer.view,admin")]
