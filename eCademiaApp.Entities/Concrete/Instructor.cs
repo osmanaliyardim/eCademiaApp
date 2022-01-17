@@ -6,8 +6,6 @@ namespace eCademiaApp.Entities.Concrete
     {
         public int Id { get; set; }        
         public int UserId { get; set; }
-        public string Name { get; set; }
-        public DateTime CreationDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public string CompanyName { get; set; }
     }
 }

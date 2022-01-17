@@ -23,7 +23,7 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
                              {
                                  Id = c.Id,
                                  Name = c.Name,
-                                 Instructor = i.Name,
+                                 Instructor = i.CompanyName,
                                  Type = t.Name,
                                  ImagePath = m.ImagePath,
                                  Price = c.Price,

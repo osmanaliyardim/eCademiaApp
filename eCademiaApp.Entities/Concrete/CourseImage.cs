@@ -9,7 +9,5 @@ namespace eCademiaApp.Entities.Concrete
         public string ImagePath { get; set; }
         public string Type { get; set; }
         public double Size { get; set; }
-        public DateTime CreationDate { get; set; }
-        public DateTime UpdateDate { get; set; }
     }
 }
