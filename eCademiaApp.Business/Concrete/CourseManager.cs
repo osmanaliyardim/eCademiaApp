@@ -3,6 +3,7 @@ using eCademiaApp.Business.Abstract;
 using eCademiaApp.Business.BusinessAspects.Autofac;
 using eCademiaApp.Business.Constants;
 using eCademiaApp.Business.ValidationRules.FluentValidation;
+using eCademiaApp.Core.Aspects.Caching;
 using eCademiaApp.Core.Aspects.Validation;
 using eCademiaApp.DataAccess.Abstract;
 using eCademiaApp.Entities.Concrete;
@@ -25,6 +26,7 @@ namespace eCademiaApp.Business.Concrete
         /// <param name="Course">course object</param>
         [SecuredOperation("course.add,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Course course)
         {
             _courseDal.Add(course);
@@ -35,6 +37,7 @@ namespace eCademiaApp.Business.Concrete
         /// <summary>This method deletes a specific course from DB.</summary>
         /// <param name="Course">course object</param>
         [SecuredOperation("course.delete,moderator,admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
@@ -43,6 +46,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns all courses from DB.</summary>
+        [CacheAspect]
         public IDataResult<List<Course>> GetAll()
         {
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll());
@@ -50,12 +54,14 @@ namespace eCademiaApp.Business.Concrete
 
         /// <summary>This method returns a specific course with id.</summary>
         /// <param name="id">course id</param>
+        [CacheAspect]
         public IDataResult<Course> GetById(int id)
         {
             return new SuccessDataResult<Course>(_courseDal.Get(c => c.Id == id));
         }
 
         /// <summary>This method returns all course details.</summary>
+        [CacheAspect]
         public IDataResult<List<CourseDetailDto>> GetCourseDetails()
         {
             return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetails());
@@ -63,6 +69,7 @@ namespace eCademiaApp.Business.Concrete
 
         /// <summary>This method returns a specific course with instructor id.</summary>
         /// <param name="id">instructor id</param>
+        [CacheAspect]
         public IDataResult<List<Course>> GetCoursesByInstructorId(int instructorId)
         {
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(i => i.InstructorId == instructorId));
@@ -70,6 +77,7 @@ namespace eCademiaApp.Business.Concrete
 
         /// <summary>This method returns a specific course with type id.</summary>
         /// <param name="id">type id</param>
+        [CacheAspect]
         public IDataResult<List<Course>> GetCoursesByTypeId(int typeId)
         {
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(i => i.TypeId == typeId));
@@ -79,6 +87,7 @@ namespace eCademiaApp.Business.Concrete
         /// <param name="Course">course object</param>
         [SecuredOperation("course.update,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Course course)
         {
             _courseDal.Update(course);
