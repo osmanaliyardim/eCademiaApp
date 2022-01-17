@@ -55,6 +55,11 @@ if (app.Environment.IsDevelopment())
 
 app.ConfigureCustomExceptionMiddleware(); // eCademiaApp.Core.Extensions
 
+// Cors to allow anyheader from specific domains:ports
+app.UseCors(builder =>
+    builder.WithOrigins("http://localhost:4000").AllowAnyHeader()
+);
+
 app.UseHttpsRedirection();
 
 app.UseRouting();
