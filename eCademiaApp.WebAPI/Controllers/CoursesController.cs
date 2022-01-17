@@ -8,13 +8,17 @@ namespace eCademiaApp.WebAPI.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
+        // Injectable service
         private readonly ICourseService _courseService;
 
+        // Injecting our services to establish a loosely coupled connection
         public CoursesController(ICourseService courseService)
         {
             _courseService = courseService;
         }
 
+        /// <summary>This method returns a specific course by id.</summary>
+        /// <param name="id">course id</param>
         [HttpGet("getById")]
         public IActionResult GetById(int id)
         {
@@ -24,6 +28,7 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        /// <summary>This method returns all courses.</summary>
         [HttpGet("getAll")]
         public IActionResult GetAll()
         {
@@ -33,8 +38,9 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        /// <summary>This method returns a specific course details.</summary>
         [HttpGet("getCourseDetails")]
-        public IActionResult GetCarDetails()
+        public IActionResult GetCourseDetails()
         {
             var result = _courseService.GetCourseDetails();
             if (result.Success) return Ok(result);
@@ -42,15 +48,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("getCoursesByTypeId")]
-        public IActionResult GetCarsByBrandId(int typeId)
-        {
-            var result = _courseService.GetCoursesByTypeId(typeId);
-            if (result.Success) return Ok(result);
-
-            return BadRequest(result.Message);
-        }
-
+        /// <summary>This method returns specific courses by id.</summary>
+        /// <param name="id">instructor id</param>
         [HttpGet("getCoursesByInstructorId")]
         public IActionResult GetCoursesByInstructorId(int instructorId)
         {
@@ -60,7 +59,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-
+        /// <summary>This method saves a new course to DB.</summary>
+        /// <param name="Course">course object</param>
         [HttpPost("add")] 
         public IActionResult Add(Course course)
         {
@@ -70,6 +70,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        /// <summary>This method updates a specific course from DB.</summary>
+        /// <param name="Course">course object</param>
         [HttpPost("update")]
         public IActionResult Update(Course course)
         {
@@ -79,6 +81,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        /// <summary>This method removes a specific course from DB.</summary>
+        /// <param name="Course">course object</param>
         [HttpPost("delete")]
         public IActionResult Delete(Course course)
         {

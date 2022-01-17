@@ -9,14 +9,18 @@ namespace eCademiaApp.WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        // Injectable service
         private readonly IUserService _userService;
 
+        // Injecting our services to establish a loosely coupled connection
         public UsersController(IUserService userService)
         {
             _userService = userService;
         }
 
-        [HttpGet("getbyid")]
+        /// <summary>This method returns a specific user by id.</summary>
+        /// <param name="id">user id</param>
+        [HttpGet("getById")]
         public IActionResult GetById(int id)
         {
             var result = _userService.GetById(id);
@@ -25,7 +29,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getall")]
+        /// <summary>This method returns all users.</summary>
+        [HttpGet("getAll")]
         public IActionResult GetAll()
         {
             var result = _userService.GetAll();
@@ -34,7 +39,9 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getuserdetailbymail")]
+        /// <summary>This method returns a specific user by email.</summary>
+        /// <param name="userMail">user email</param>
+        [HttpGet("getUserDetailByMail")]
         public IActionResult GetUserDetailByMail(string userMail)
         {
             var result = _userService.GetUserDetailByMail(userMail);
@@ -43,6 +50,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
+        /// <summary>This method updates a specific user from DB.</summary>
+        /// <param name="User">user object</param>
         [HttpPost("update")]
         public IActionResult Update(User user)
         {
@@ -52,7 +61,9 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("updateuserdetails")]
+        /// <summary>This method updates a specific userDetailForUpdate.</summary>
+        /// <param name="UserDetailForUpdateDto">userDetailForUpdate object</param>
+        [HttpPost("updateUserDetails")]
         public IActionResult UpdateUserDetails(UserDetailForUpdateDto userDetailForUpdate)
         {
             var result = _userService.UpdateUserDetails(userDetailForUpdate);
@@ -61,6 +72,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
+        /// <summary>This method removes a specific user from DB.</summary>
+        /// <param name="User">user object</param>
         [HttpDelete("delete")]
         public IActionResult Delete(User user)
         {

@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Autofac Middleware
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 // Register services directly with Autofac here. Don't
@@ -22,10 +23,11 @@ builder.Services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() });
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+// Swagger Middleware
 builder.Services.AddSwaggerGen();
 
+// JWT Token Configurations
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

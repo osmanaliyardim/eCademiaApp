@@ -8,13 +8,18 @@ namespace eCademiaApp.WebAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        // Injectable service
         private readonly IAuthService _authService;
 
+        // Injecting our services to establish a loosely coupled connection
         public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
 
+        /// <summary>This method checks is user authenticated or not.</summary>
+        /// <param name="userMail">user email</param>
+        /// <param name="requiredRoles">required roles to access</param>
         [HttpGet("isAuthenticated")]
         public ActionResult IsAuthenticated(string userMail, string requiredRoles)
         {
@@ -28,6 +33,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return Unauthorized(result.Message);
         }
 
+        /// <summary>This method lets user sign in.</summary>
+        /// <param name="UserForLoginDto">userForLoginDto object</param>
         [HttpPost("login")]
         public ActionResult Login(UserForLoginDto userForLoginDto)
         {
@@ -44,13 +51,15 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        /// <summary>This method lets user sign up.</summary>
+        /// <param name="UserForRegisterDto">UserForRegisterDto object</param>
         [HttpPost("register")]
         public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success) return BadRequest(userExists.Message);
 
-            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
+            var registerResult = _authService.Register(userForRegisterDto);
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {

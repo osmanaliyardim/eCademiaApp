@@ -8,14 +8,18 @@ namespace eCademiaApp.WebAPI.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
+        // Injectable service
         private readonly ICustomerService _customerService;
 
+        // Injecting our services to establish a loosely coupled connection
         public CustomersController(ICustomerService customerService)
         {
             _customerService = customerService;
         }
 
-        [HttpGet("getbyid")]
+        /// <summary>This method returns a specific customer by id.</summary>
+        /// <param name="id">customer id</param>
+        [HttpGet("getById")]
         public IActionResult GetById(int id)
         {
             var result = _customerService.GetById(id);
@@ -24,7 +28,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getall")]
+        /// <summary>This method returns all customers.</summary>
+        [HttpGet("getAll")]
         public IActionResult GetAll()
         {
             var result = _customerService.GetAll();
@@ -33,6 +38,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
+        /// <summary>This method saves a new customer to DB.</summary>
+        /// <param name="Customer">customer object</param>
         [HttpPost("add")]
         public IActionResult Add(Customer customer)
         {
@@ -42,6 +49,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
+        /// <summary>This method updates a specific customer from DB.</summary>
+        /// <param name="Customer">customer object</param>
         [HttpPost("update")]
         public IActionResult Update(Customer customer)
         {
@@ -51,6 +60,8 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result);
         }
 
+        /// <summary>This method removes a specific customer from DB.</summary>
+        /// <param name="Customer">customer object</param>
         [HttpPost("delete")]
         public IActionResult Delete(Customer customer)
         {
