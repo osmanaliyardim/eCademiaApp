@@ -1,5 +1,6 @@
 ﻿namespace eCademiaApp.Core.Utilities.Security.JWT
 {
+    // TokenOptions entity
     public class TokenOptions
     {
         public string Audience { get; set; }

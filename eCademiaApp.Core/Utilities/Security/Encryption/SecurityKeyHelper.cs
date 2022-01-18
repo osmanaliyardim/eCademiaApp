@@ -3,6 +3,7 @@ using System.Text;
 
 namespace eCademiaApp.Core.Utilities.Security.Encryption
 {
+    // To create a security key for JWT
     public class SecurityKeyHelper
     {
         public static SecurityKey CreateSecurityKey(string securityKey)

@@ -1,5 +1,6 @@
 ﻿namespace eCademiaApp.Core.CrossCuttingConcerns.Caching
 {
+    // Signature for a caching mechanism
     public interface ICacheManager
     {
         void Add(string key, object value, int duration);

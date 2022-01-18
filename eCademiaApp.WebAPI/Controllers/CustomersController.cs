@@ -39,7 +39,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method saves a new customer to DB.</summary>
-        /// <param name="Customer">customer object</param>
+        /// <param name="customer">customer object</param>
         [HttpPost("add")]
         public IActionResult Add(Customer customer)
         {
@@ -50,7 +50,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method updates a specific customer from DB.</summary>
-        /// <param name="Customer">customer object</param>
+        /// <param name="customer">customer object</param>
         [HttpPost("update")]
         public IActionResult Update(Customer customer)
         {
@@ -61,7 +61,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method removes a specific customer from DB.</summary>
-        /// <param name="Customer">customer object</param>
+        /// <param name="customer">customer object</param>
         [HttpPost("delete")]
         public IActionResult Delete(Customer customer)
         {

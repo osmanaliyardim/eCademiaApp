@@ -60,7 +60,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method saves a new course to DB.</summary>
-        /// <param name="Course">course object</param>
+        /// <param name="course">course object</param>
         [HttpPost("add")] 
         public IActionResult Add(Course course)
         {
@@ -71,7 +71,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method updates a specific course from DB.</summary>
-        /// <param name="Course">course object</param>
+        /// <param name="course">course object</param>
         [HttpPost("update")]
         public IActionResult Update(Course course)
         {
@@ -82,7 +82,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method removes a specific course from DB.</summary>
-        /// <param name="Course">course object</param>
+        /// <param name="course">course object</param>
         [HttpPost("delete")]
         public IActionResult Delete(Course course)
         {

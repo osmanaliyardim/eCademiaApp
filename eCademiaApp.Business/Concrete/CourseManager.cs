@@ -23,7 +23,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a new course to DB.</summary>
-        /// <param name="Course">course object</param>
+        /// <param name="course">course object</param>
         [SecuredOperation("course.add,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
         [CacheRemoveAspect("ICarService.Get")]
@@ -68,7 +68,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns a specific course with instructor id.</summary>
-        /// <param name="id">instructor id</param>
+        /// <param name="instructorId">instructor id</param>
         [CacheAspect]
         public IDataResult<List<Course>> GetCoursesByInstructorId(int instructorId)
         {
@@ -76,7 +76,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns a specific course with type id.</summary>
-        /// <param name="id">type id</param>
+        /// <param name="typeId">type id</param>
         [CacheAspect]
         public IDataResult<List<Course>> GetCoursesByTypeId(int typeId)
         {
@@ -84,7 +84,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method updates a specific new course from DB.</summary>
-        /// <param name="Course">course object</param>
+        /// <param name="course">course object</param>
         [SecuredOperation("course.update,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
         [CacheRemoveAspect("ICarService.Get")]

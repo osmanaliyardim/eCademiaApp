@@ -2,6 +2,7 @@
 
 namespace eCademiaApp.Core.Utilities.IoC
 {
+    // To automate using services
     public static class ServiceTool
     {
         public static IServiceProvider ServiceProvider { get; private set; }

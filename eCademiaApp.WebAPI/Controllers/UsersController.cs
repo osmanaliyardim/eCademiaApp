@@ -51,7 +51,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method updates a specific user from DB.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         [HttpPost("update")]
         public IActionResult Update(User user)
         {
@@ -73,7 +73,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method removes a specific user from DB.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         [HttpDelete("delete")]
         public IActionResult Delete(User user)
         {

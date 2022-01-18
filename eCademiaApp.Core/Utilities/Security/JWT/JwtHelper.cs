@@ -8,11 +8,14 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace eCademiaApp.Core.Utilities.Security.JWT
 {
+    // To create access and refresh token with JWT
     public class JwtHelper : ITokenHelper
     {
+        // Injectable services
         private readonly TokenOptions _tokenOptions;
         private DateTime _accessTokenExpiration;
 
+        // Injecting our service to establish a loosely coupled connection
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,7 +24,7 @@ namespace eCademiaApp.Core.Utilities.Security.JWT
 
         public IConfiguration Configuration { get; }
 
-
+        // To create a jwt token with user and its claims
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
         {
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
@@ -38,6 +41,7 @@ namespace eCademiaApp.Core.Utilities.Security.JWT
             };
         }
 
+        // To create a jwt security token with tokenOptions in appSettings.json, user, its credidentals and claims
         public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
             SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
         {
@@ -52,6 +56,7 @@ namespace eCademiaApp.Core.Utilities.Security.JWT
             return jwt;
         }
 
+        // To set user claim(s)
         private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();

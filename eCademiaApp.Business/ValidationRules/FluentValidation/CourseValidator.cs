@@ -6,7 +6,7 @@ namespace eCademiaApp.Business.ValidationRules.FluentValidation
     // FluentValidation checks for back-end attribute validation
     public class CourseValidator : AbstractValidator<Course>
     {
-        // Validations for courses
+        // Validation rules for courses
         public CourseValidator()
         {
             RuleFor(c => c.Name).MinimumLength(10).MaximumLength(50).WithMessage("Course name must contain between 10-50 characters.");

@@ -34,7 +34,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a customer to DB.</summary>
-        /// <param name="Customer">customer object</param>
+        /// <param name="customer">customer object</param>
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
@@ -43,7 +43,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method updates a specific customer from DB.</summary>
-        /// <param name="Customer">customer object</param>
+        /// <param name="customer">customer object</param>
         [SecuredOperation("customer.update,admin")]
         public IResult Update(Customer customer)
         {
@@ -53,7 +53,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method removes a specific customer from DB.</summary>
-        /// <param name="Customer">customer object</param>
+        /// <param name="customer">customer object</param>
         [SecuredOperation("customer.delete,admin")]
         public IResult Delete(Customer customer)
         {

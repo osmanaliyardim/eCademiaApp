@@ -33,7 +33,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a instructor to DB.</summary>
-        /// <param name="Instructor">instructor object</param>
+        /// <param name="instructor">instructor object</param>
         public IResult Add(Instructor instructor)
         {
             _instructorDal.Add(instructor);
@@ -52,7 +52,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method removes a specific instructor from DB.</summary>
-        /// <param name="Instructor">instructor object</param>
+        /// <param name="instructor">instructor object</param>
         [SecuredOperation("instructor.delete,admin")]
         public IResult Delete(Instructor instructor)
         {

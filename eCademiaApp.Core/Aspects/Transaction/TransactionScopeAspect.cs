@@ -4,6 +4,7 @@ using System.Transactions;
 
 namespace eCademiaApp.Core.Aspects.Transaction
 {
+    // To make transactions when you want to revert a method in any step that occurs an error
     public class TransactionScopeAspect : MethodInterception
     {
         public override void Intercept(IInvocation invocation)
@@ -17,7 +18,7 @@ namespace eCademiaApp.Core.Aspects.Transaction
                 }
                 catch (Exception e)
                 {
-                    transactionScope.Dispose();
+                    transactionScope.Dispose(); // When an error occured, dispose it
                     throw;
                 }
             }
