@@ -39,7 +39,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a OperationClaim to DB.</summary>
-        /// <param name="id">operationClaim object</param>
+        /// <param name="operationClaim">operationClaim object</param>
         [SecuredOperation("admin")]
         public IResult Add(OperationClaim operationClaim)
         {
@@ -49,7 +49,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method updates a specific operationClaim from DB.</summary>
-        /// <param name="OperationClaim">operationClaim object</param>
+        /// <param name="operationClaim">operationClaim object</param>
         [SecuredOperation("admin")]
         public IResult Update(OperationClaim operationClaim)
         {
@@ -59,7 +59,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method removes a specific operationClaim from DB.</summary>
-        /// <param name="OperationClaim">operationClaim object</param>
+        /// <param name="operationClaim">operationClaim object</param>
         [SecuredOperation("admin")]
         public IResult Delete(OperationClaim operationClaim)
         {

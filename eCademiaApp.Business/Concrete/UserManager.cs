@@ -33,7 +33,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns all of users claims.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
@@ -47,7 +47,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns a specific user detail by email.</summary>
-        /// <param name="email">user email</param>
+        /// <param name="userMail">user email</param>
         public IDataResult<UserDetailDto> GetUserDetailByMail(string userMail)
         {
             return new SuccessDataResult<UserDetailDto>(_userDal.GetUserDetail(userMail));
@@ -61,7 +61,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a user to DB.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -70,7 +70,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method updates a specific user from DB.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         [SecuredOperation("user.update,admin")]
         public IResult Update(User user)
         {
@@ -80,7 +80,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method updates a specific user from DB.</summary>
-        /// <param name="UserDetailForUpdateDto">user details for update joined table</param>
+        /// <param name="userDetailForUpdate">user details for update joined table</param>
         [SecuredOperation("user")]
         public IResult UpdateUserDetails(UserDetailForUpdateDto userDetailForUpdate)
         {
@@ -113,7 +113,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method removes a specific user from DB.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         [SecuredOperation("user.delete,admin")]
         public IResult Delete(User user)
         {

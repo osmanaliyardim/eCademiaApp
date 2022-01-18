@@ -23,7 +23,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns a specific userOperationClaim by id.</summary>
-        /// <param name="UserOperationClaim">userOperationClaim id</param>
+        /// <param name="id">userOperationClaim id</param>
         [SecuredOperation("admin")]
         public IDataResult<UserOperationClaim> GetById(int id)
         {
@@ -38,7 +38,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a userOperationClaim to a user.</summary>
-        /// <param name="User">user object</param>
+        /// <param name="user">user object</param>
         public IResult AddUserClaim(User user)
         {
             var operationClaim = _operationClaimService.GetByName("user").Data;
@@ -48,7 +48,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves a userOperationClaim to DB.</summary>
-        /// <param name="UserOperationClaim">userOperationClaim object</param>
+        /// <param name="userOperationClaim">userOperationClaim object</param>
         [SecuredOperation("admin")]
         public IResult Add(UserOperationClaim userOperationClaim)
         {
@@ -57,7 +57,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method updates a specific userOperationClaim from DB.</summary>
-        /// <param name="UserOperationClaim">userOperationClaim object</param>
+        /// <param name="userOperationClaim">userOperationClaim object</param>
         [SecuredOperation("admin")]
         public IResult Update(UserOperationClaim userOperationClaim)
         {
@@ -66,7 +66,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method removes a specific userOperationClaim from DB.</summary>
-        /// <param name="UserOperationClaim">userOperationClaim object</param>
+        /// <param name="userOperationClaim">userOperationClaim object</param>
         [SecuredOperation("admin")]
         public IResult Delete(UserOperationClaim userOperationClaim)
         {

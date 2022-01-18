@@ -3,6 +3,7 @@ using System.Text;
 
 namespace eCademiaApp.Core.Utilities.Security.Hashing
 {
+    // To encrypt and hash user passwords to save DB and verify them when it is needed.
     public class HashingHelper
     {
         public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

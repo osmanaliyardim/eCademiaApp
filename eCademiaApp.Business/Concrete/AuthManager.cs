@@ -29,7 +29,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method saves user information to DB.</summary>
-        /// <param name="UserForRegisterDto">joined registration table</param>
+        /// <param name="userForRegisterDto">joined registration table</param>
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
@@ -53,7 +53,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method lets user to sign in.</summary>
-        /// <param name="UserForLoginDto">joined login table</param>
+        /// <param name="userForLoginDto">joined login table</param>
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheckResult = _userService.GetByMail(userForLoginDto.Email);
@@ -80,7 +80,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method creates an access and refresh token for a user.</summary>
-        /// <param name="User">user object/table</param>
+        /// <param name="user">user object/table</param>
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claimsResult = _userService.GetClaims(user);

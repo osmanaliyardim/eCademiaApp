@@ -34,7 +34,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method lets user sign in.</summary>
-        /// <param name="UserForLoginDto">userForLoginDto object</param>
+        /// <param name="userForLoginDto">userForLoginDto object</param>
         [HttpPost("login")]
         public ActionResult Login(UserForLoginDto userForLoginDto)
         {
@@ -52,7 +52,7 @@ namespace eCademiaApp.WebAPI.Controllers
         }
 
         /// <summary>This method lets user sign up.</summary>
-        /// <param name="UserForRegisterDto">UserForRegisterDto object</param>
+        /// <param name="userForRegisterDto">UserForRegisterDto object</param>
         [HttpPost("register")]
         public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {

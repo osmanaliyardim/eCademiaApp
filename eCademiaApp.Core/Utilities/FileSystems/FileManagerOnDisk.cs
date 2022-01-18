@@ -2,8 +2,12 @@
 
 namespace eCademiaApp.Core.Utilities.FileSystems
 {
+    // Saving files on disk manager
     public class FileManagerOnDisk : IFileSystem
     {
+        /// <summary>This method saves file(s) to DB.</summary>
+        /// <param name="file">file you want to upload</param>
+        /// <param name="path">location where you want to place</param>
         public string Add(IFormFile file, string path)
         {
             var sourcepath = Path.GetTempFileName();
@@ -18,6 +22,10 @@ namespace eCademiaApp.Core.Utilities.FileSystems
             return path;
         }
 
+        /// <summary>This method updates file(s) from DB.</summary>
+        /// <param name="path">former location of file</param>
+        /// <param name="file">file you want to update</param>
+        /// <param name="path">new location where you want to place</param>
         public string Update(string pathToUpdate, IFormFile file, string path)
 
         {
@@ -31,6 +39,8 @@ namespace eCademiaApp.Core.Utilities.FileSystems
             return path;
         }
 
+        /// <summary>This method removes file(s) from DB.</summary>
+        /// <param name="path">location of file</param>
         public void Delete(string path)
         {
             if (File.Exists(path))
