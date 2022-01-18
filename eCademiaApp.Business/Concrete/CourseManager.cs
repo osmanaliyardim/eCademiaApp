@@ -46,7 +46,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns all courses from DB.</summary>
-        [CacheAspect]
+        //[CacheAspect] TODO: cache null ref error
         public IDataResult<List<Course>> GetAll()
         {
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll());
