@@ -32,6 +32,9 @@ namespace eCademiaApp.Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
+            builder.RegisterType<InstructorManager>().As<IInstructorService>().SingleInstance();
+            builder.RegisterType<EfInstructorDal>().As<IInstructorDal>().SingleInstance();
+
             builder.RegisterType<OperationClaimManager>().As<IOperationClaimService>().SingleInstance();
             builder.RegisterType<EfOperationClaimDal>().As<IOperationClaimDal>().SingleInstance();
 
