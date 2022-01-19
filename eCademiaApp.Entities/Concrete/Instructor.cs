@@ -7,6 +7,8 @@ namespace eCademiaApp.Entities.Concrete
     {
         public int Id { get; set; }        
         public int UserId { get; set; }
+        public int CourseId { get; set; }
         public string CompanyName { get; set; }
+        public bool Status { get; set; }
     }
 }

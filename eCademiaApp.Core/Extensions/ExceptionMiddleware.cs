@@ -51,7 +51,8 @@ namespace eCademiaApp.Core.Extensions
             return httpContext.Response.WriteAsync(new ErrorDetails
             {
                 StatusCode = httpContext.Response.StatusCode,
-                Message = message
+                Message = message,
+                InnerMessage = e.Message // TODO: Can be deleted
             }.ToString());
         }
     }
