@@ -23,13 +23,14 @@ namespace eCademiaApp.Business.BusinessAspects.Autofac
         }
 
         /// <summary>This method checks user has a permisson before methods are executed.</summary>
-        /// <param name="IInvocation">running method</param>
+        /// <param name="invocation">running method</param>
         protected override void OnBefore(IInvocation invocation)
         {
             var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
             foreach (var role in _roles)
                 if (roleClaims.Contains(role))
                     return;
+            _httpContextAccessor.HttpContext.Response.StatusCode = 401;
             throw new Exception(Messages.AuthorizationDenied);
         }
     }

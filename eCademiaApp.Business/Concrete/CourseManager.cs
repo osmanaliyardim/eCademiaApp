@@ -27,7 +27,7 @@ namespace eCademiaApp.Business.Concrete
         /// <param name="course">course object</param>
         [SecuredOperation("course.add,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
-        [CacheRemoveAspect("ICourseService.Get")]
+        //[CacheRemoveAspect("ICourseService.Get")]
         public IResult Add(Course course)
         {
             _courseDal.Add(course);
@@ -38,7 +38,7 @@ namespace eCademiaApp.Business.Concrete
         /// <summary>This method deletes a specific course from DB.</summary>
         /// <param name="Course">course object</param>
         [SecuredOperation("course.delete,moderator,admin")]
-        [CacheRemoveAspect("ICourseService.Get")]
+        //[CacheRemoveAspect("ICourseService.Get")]
         public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
@@ -47,7 +47,7 @@ namespace eCademiaApp.Business.Concrete
         }
 
         /// <summary>This method returns all courses from DB.</summary>
-        [CacheAspect]
+        //[CacheAspect]
         public IDataResult<List<Course>> GetAll()
         {
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll());
@@ -96,7 +96,7 @@ namespace eCademiaApp.Business.Concrete
         /// <param name="course">course object</param>
         [SecuredOperation("course.update,moderator,admin")]
         [ValidationAspect(typeof(CourseValidator))]
-        [CacheRemoveAspect("ICourseService.Get")]
+        //[CacheRemoveAspect("ICourseService.Get")]
         public IResult Update(Course course)
         {
             _courseDal.Update(course);

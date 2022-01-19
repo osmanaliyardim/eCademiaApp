@@ -30,28 +30,30 @@ namespace eCademiaApp.Core.Extensions
         private Task HandleExceptionAsync(HttpContext httpContext, Exception e)
         {
             httpContext.Response.ContentType = "application/json";
-            httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var message = "Internal Server Error";
-            IEnumerable<ValidationFailure> errors;
             if (e.GetType() == typeof(ValidationException))
             {
-                message = e.Message;
-                errors = ((ValidationException)e).Errors;
-                httpContext.Response.StatusCode = 400;
-
                 return httpContext.Response.WriteAsync(new ValidationErrorDetails
                 {
                     StatusCode = 400,
-                    Message = message,
-                    Errors = errors
+                    Message = e.Message,
+                    InnerMessage = ((ValidationException)e).Errors != null ? ((ValidationException)e).Errors.FirstOrDefault().ErrorMessage : ""
+                    //Errors = ((ValidationException)e).Errors // TODO: Can be changed
+                }.ToString());
+            }
+            else if (e.Message == "You are not authorized.")
+            {
+                return httpContext.Response.WriteAsync(new ErrorDetails
+                {
+                    StatusCode = 401,
+                    Message = e.Message
                 }.ToString());
             }
 
             return httpContext.Response.WriteAsync(new ErrorDetails
             {
-                StatusCode = httpContext.Response.StatusCode,
-                Message = message,
+                StatusCode = (int)HttpStatusCode.InternalServerError,
+                Message = "Internal Server Error",
                 InnerMessage = e.Message // TODO: Can be deleted
             }.ToString());
         }
