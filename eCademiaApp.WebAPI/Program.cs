@@ -9,7 +9,19 @@ using eCademiaApp.Core.Utilities.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://127.0.0.1:5500").AllowAnyHeader();
+                          builder.WithOrigins("http://ecademia.com").AllowAnyHeader();
+                      });
+});
 
 // Autofac Middleware
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -50,7 +62,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    //app.UseDeveloperExceptionPage();
+    app.UseDeveloperExceptionPage();
 }
 
 app.ConfigureCustomExceptionMiddleware(); // eCademiaApp.Core.Extensions
@@ -58,6 +70,9 @@ app.ConfigureCustomExceptionMiddleware(); // eCademiaApp.Core.Extensions
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+// Cors to allow anyheader from specific domains:ports
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 

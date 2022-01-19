@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results;
+using eCademiaApp.Core.Utilities.Pagination;
 using eCademiaApp.Entities.Concrete;
 using eCademiaApp.Entities.DTOs;
 
@@ -9,8 +10,9 @@ namespace eCademiaApp.Business.Abstract
     {
         IDataResult<Course> GetById(int id);
         IDataResult<List<Course>> GetAll();
-        IDataResult<List<Course>> GetCoursesByTypeId(int typeId);
-        IDataResult<List<Course>> GetCoursesByInstructorId(int instructorId);
+        IDataResult<List<Course>> GetAllWithPagination(PaginationParameters paginationParameters);
+        IDataResult<List<CourseDetailDto>> GetCoursesByTypeId(int typeId);
+        IDataResult<List<CourseDetailDto>> GetCoursesByInstructorId(int instructorId);
 
         IDataResult<List<CourseDetailDto>> GetCourseDetails();
 

@@ -17,15 +17,18 @@ namespace eCademiaApp.Business.Concrete
         private readonly ITokenHelper _tokenHelper;
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IUserService _userService;
+        private readonly IInstructorService _instructorService;
 
         // Injecting our services to establish a loosely coupled connection
         public AuthManager(IUserService userService, ITokenHelper tokenHelper,
-            IUserOperationClaimService userOperationClaimService, ICustomerService customerService)
+            IUserOperationClaimService userOperationClaimService, ICustomerService customerService,
+            IInstructorService instructorService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
             _userOperationClaimService = userOperationClaimService;
             _customerService = customerService;
+            _instructorService = instructorService;
         }
 
         /// <summary>This method saves user information to DB.</summary>
@@ -46,8 +49,10 @@ namespace eCademiaApp.Business.Concrete
             _userService.Add(newUser);
             var user = _userService.GetByMail(newUser.Email).Data;
             _userOperationClaimService.AddUserClaim(user);
-            var newCustomer = new Customer { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}" };
+            var newCustomer = new Customer { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}", Status = false };
             _customerService.Add(newCustomer);
+            var newInstructor = new Instructor { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}",  Status = false };
+            _instructorService.Add(newInstructor);
 
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }

@@ -6,6 +6,8 @@ namespace eCademiaApp.Entities.DTOs
     public class CourseDetailDto : IDto
     {
         public int Id { get; set; }
+        public int InstructorId { get; set; }
+        public int CourseTypeId { get; set; }
         public string Name { get; set; }
         public string Instructor { get; set; }
         public string Type { get; set; }

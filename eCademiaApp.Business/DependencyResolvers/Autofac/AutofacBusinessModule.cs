@@ -9,6 +9,7 @@ using Autofac;
 using Module = Autofac.Module;
 using Castle.DynamicProxy;
 using Autofac.Extras.DynamicProxy;
+using eCademiaApp.Core.Utilities.Pagination;
 
 namespace eCademiaApp.Business.DependencyResolvers.Autofac
 {
@@ -17,8 +18,10 @@ namespace eCademiaApp.Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            // Setting a concrete class for each interface
+            // Setting a concrete class for each interface/abs class
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+            
+            builder.RegisterType<PaginationParameter>().As<PaginationParameters>().SingleInstance();
 
             builder.RegisterType<CourseManager>().As<ICourseService>().SingleInstance();
             builder.RegisterType<EfCourseDal>().As<ICourseDal>().SingleInstance();
