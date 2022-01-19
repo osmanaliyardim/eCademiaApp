@@ -74,7 +74,7 @@ namespace eCademiaApp.WebAPI.Controllers
 
         /// <summary>This method removes a specific user from DB.</summary>
         /// <param name="user">user object</param>
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(User user)
         {
             var result = _userService.Delete(user);

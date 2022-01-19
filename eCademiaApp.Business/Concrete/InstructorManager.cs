@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results;
+using eCademiaApp.Business.Abstract;
 using eCademiaApp.Business.BusinessAspects.Autofac;
 using eCademiaApp.Business.Constants;
 using eCademiaApp.DataAccess.Abstract;
@@ -6,7 +7,7 @@ using eCademiaApp.Entities.Concrete;
 
 namespace eCademiaApp.Business.Concrete
 {
-    public class InstructorManager
+    public class InstructorManager : IInstructorService
     {
         // Injectable services
         private readonly IInstructorDal _instructorDal;
@@ -59,6 +60,13 @@ namespace eCademiaApp.Business.Concrete
             _instructorDal.Delete(instructor);
 
             return new SuccessResult(Messages.InstructorDeleted);
+        }
+
+        /// <summary>This method returns a specific instructor with course id.</summary>
+        /// <param name="courseId">courseId id</param>
+        public IDataResult<List<Instructor>> GetInstructorsByCourseId(int courseId)
+        {
+            return new SuccessDataResult<List<Instructor>>(_instructorDal.GetAll(i => i.CourseId == courseId));
         }
     }
 }

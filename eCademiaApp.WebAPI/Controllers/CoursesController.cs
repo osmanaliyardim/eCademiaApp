@@ -1,4 +1,5 @@
 ﻿using eCademiaApp.Business.Abstract;
+using eCademiaApp.Core.Utilities.Pagination;
 using eCademiaApp.Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +11,13 @@ namespace eCademiaApp.WebAPI.Controllers
     {
         // Injectable service
         private readonly ICourseService _courseService;
+        private readonly PaginationParameters _paginationParameters;
 
         // Injecting our services to establish a loosely coupled connection
-        public CoursesController(ICourseService courseService)
+        public CoursesController(ICourseService courseService, PaginationParameters paginationParameters)
         {
             _courseService = courseService;
+            _paginationParameters = paginationParameters;  
         }
 
         /// <summary>This method returns a specific course by id.</summary>
@@ -38,6 +41,17 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        /// <summary>This method returns all courses with pagination.</summary>
+        [HttpGet("getAllWithPagination")]
+        public IActionResult GetAllWithPagination(int pageNumber)
+        {
+            _paginationParameters.PageNumber = pageNumber; 
+            var result = _courseService.GetAllWithPagination(_paginationParameters);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result.Message);
+        }
+
         /// <summary>This method returns a specific course details.</summary>
         [HttpGet("getCourseDetails")]
         public IActionResult GetCourseDetails()
@@ -48,12 +62,23 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        /// <summary>This method returns specific courses by id.</summary>
+        /// <summary>This method returns specific courses by instructorId.</summary>
         /// <param name="id">instructor id</param>
         [HttpGet("getCoursesByInstructorId")]
         public IActionResult GetCoursesByInstructorId(int instructorId)
         {
             var result = _courseService.GetCoursesByInstructorId(instructorId);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result.Message);
+        }
+
+        /// <summary>This method returns specific courses by typeId.</summary>
+        /// <param name="typeId">type id</param>
+        [HttpGet("getCoursesByTypeId")]
+        public IActionResult GetCoursesByTypeId(int typeId)
+        {
+            var result = _courseService.GetCoursesByTypeId(typeId);
             if (result.Success) return Ok(result);
 
             return BadRequest(result.Message);

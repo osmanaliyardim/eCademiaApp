@@ -9,6 +9,7 @@ namespace eCademiaApp.Business.Abstract
         IDataResult<Instructor> GetById(int id);
 
         IDataResult<List<Instructor>> GetAll();
+        IDataResult<List<Instructor>> GetInstructorsByCourseId(int courseId);
 
         IResult Add(Instructor instructor);
 
