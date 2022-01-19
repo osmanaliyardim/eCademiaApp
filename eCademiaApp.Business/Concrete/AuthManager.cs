@@ -3,6 +3,8 @@ using Core.Utilities.Results;
 using eCademiaApp.Business.Abstract;
 using eCademiaApp.Business.BusinessAspects.Autofac;
 using eCademiaApp.Business.Constants;
+using eCademiaApp.Business.ValidationRules.FluentValidation;
+using eCademiaApp.Core.Aspects.Validation;
 using eCademiaApp.Core.Utilities.Security.Hashing;
 using eCademiaApp.Core.Utilities.Security.JWT;
 using eCademiaApp.Entities.Concrete;
@@ -33,6 +35,7 @@ namespace eCademiaApp.Business.Concrete
 
         /// <summary>This method saves user information to DB.</summary>
         /// <param name="userForRegisterDto">joined registration table</param>
+        [ValidationAspect(typeof(UserForRegisterValidator))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
@@ -59,6 +62,7 @@ namespace eCademiaApp.Business.Concrete
 
         /// <summary>This method lets user to sign in.</summary>
         /// <param name="userForLoginDto">joined login table</param>
+        [ValidationAspect(typeof(UserForLoginValidator))]
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheckResult = _userService.GetByMail(userForLoginDto.Email);
