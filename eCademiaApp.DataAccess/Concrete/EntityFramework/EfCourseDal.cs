@@ -16,15 +16,20 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
             {
                 var result = from c in context.Courses
                              join t in context.CourseTypes
-                                 on c.Id equals t.CourseId
+                                 on ctr.CourseTypeId equals t.Id
+                             join cir in context.CourseImageRefs
+                                on c.Id equals cir.CourseId
                              join m in context.CourseImages
-                                 on c.Id equals m.CourseId
+                                on cir.CourseImageId equals m.Id
+                             join e in context.Enrollments
+                                on c.Id equals e.CourseId
                              join i in context.Instructors
                                 on c.Id equals i.CourseId
                              select new CourseDetailDto
                              {
                                  Id = c.Id,
                                  Name = c.Name,
+                                 Description = c.Description,
                                  Instructor = i.CompanyName,
                                  InstructorId = i.Id,
                                  Type = t.Name,
