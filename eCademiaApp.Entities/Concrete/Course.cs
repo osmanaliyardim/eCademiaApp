@@ -16,7 +16,6 @@ namespace eCademiaApp.Entities.Concrete
         public Int64 Duration { get; set; } //bigint == long
         public string Language { get; set; }
         public int StudentNumber { get; set; }
-
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public bool isDeleted { get; set; }
     }
 }

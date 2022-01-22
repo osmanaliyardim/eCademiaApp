@@ -16,6 +16,9 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Enrollment> Entrollments { get; set; }
 
+        public DbSet<CourseTypeRef> CourseTypeRefs { get; set; }
+        public DbSet<CourseImageRef> CourseImageRefs { get; set; }
+
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }

@@ -61,12 +61,5 @@ namespace eCademiaApp.Business.Concrete
 
             return new SuccessResult(Messages.InstructorDeleted);
         }
-
-        /// <summary>This method returns a specific instructor with course id.</summary>
-        /// <param name="courseId">courseId id</param>
-        public IDataResult<List<Instructor>> GetInstructorsByCourseId(int courseId)
-        {
-            return new SuccessDataResult<List<Instructor>>(_instructorDal.GetAll(i => i.CourseId == courseId));
-        }
     }
 }
