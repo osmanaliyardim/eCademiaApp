@@ -52,11 +52,21 @@ namespace eCademiaApp.WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        /// <summary>This method returns a specific course details.</summary>
+        /// <summary>This method returns all course details.</summary>
         [HttpGet("getCourseDetails")]
         public IActionResult GetCourseDetails()
         {
             var result = _courseService.GetCourseDetails();
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result.Message);
+        }
+
+        /// <summary>This method returns all course details.</summary>
+        [HttpGet("getCourseDetailsById")]
+        public IActionResult GetCourseDetails(int id)
+        {
+            var result = _courseService.GetCourseDetailsById(id);
             if (result.Success) return Ok(result);
 
             return BadRequest(result.Message);

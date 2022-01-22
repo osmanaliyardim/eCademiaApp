@@ -76,6 +76,11 @@ namespace eCademiaApp.Business.Concrete
             return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetails());
         }
 
+        public IDataResult<List<CourseDetailDto>> GetCourseDetailsById(int id)
+        {
+            return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetails(c => c.Id == id));
+        }
+
         /// <summary>This method returns a specific course with instructor id.</summary>
         /// <param name="instructorId">type id</param>
         //[CacheAspect]

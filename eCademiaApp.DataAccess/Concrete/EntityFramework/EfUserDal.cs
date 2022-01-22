@@ -29,8 +29,10 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
             {
                 var result =
                     (from u in context.Users
+                     join e in context.Enrollments
+                         on u.Id equals e.UserId
                      join c in context.Customers
-                         on u.Id equals c.UserId
+                         on e.CustomerId equals c.Id
                      where u.Email == userMail
                      select new UserDetailDto
                      {

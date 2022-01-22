@@ -13,8 +13,9 @@ namespace eCademiaApp.Entities.Concrete
         public double Point { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
-        public Int64 Duration { get; set; } // bigint == long
+        public Int64 Duration { get; set; } //bigint == long
         public string Language { get; set; }
         public int StudentNumber { get; set; }
+        public bool isDeleted { get; set; }
     }
 }
