@@ -52,10 +52,10 @@ namespace eCademiaApp.Business.Concrete
             _userService.Add(newUser);
             var user = _userService.GetByMail(newUser.Email).Data;
             _userOperationClaimService.AddUserClaim(user);
-            var newCustomer = new Customer { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}", Status = false };
-            _customerService.Add(newCustomer);
-            var newInstructor = new Instructor { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}",  Status = false };
-            _instructorService.Add(newInstructor);
+            var customer = new Customer { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}", Status = false };
+            _customerService.Add(customer);
+            var instructor = new Instructor { UserId = user.Id, CompanyName = $"{user.FirstName} {user.LastName}",  Status = false };
+            _instructorService.Add(instructor);
 
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }

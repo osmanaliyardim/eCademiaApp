@@ -16,15 +16,18 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
 
+        public DbSet<CourseTypeRef> CourseTypeRefs { get; set; }
+        public DbSet<CourseImageRef> CourseImageRefs { get; set; }
+
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
-        // Connecting to DB
+        // DB Connection
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-3GMD0GL\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true",
-               //builder => builder.EnableRetryOnFailure());
+            //    builder => builder.EnableRetryOnFailure());
             optionsBuilder.UseSqlServer(@"Server=ETR-LT168\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true",
                 builder => builder.EnableRetryOnFailure());
         }
