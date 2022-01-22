@@ -9,6 +9,7 @@ namespace eCademiaApp.Entities.DTOs
         public int InstructorId { get; set; }
         public int CourseTypeId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public string Instructor { get; set; }
         public string Type { get; set; }
         public string ImagePath { get; set; }

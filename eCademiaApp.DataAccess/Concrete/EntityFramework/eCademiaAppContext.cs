@@ -14,6 +14,7 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
         public DbSet<CreditCard> CreditCards { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
 
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
@@ -23,7 +24,7 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-3GMD0GL\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true",
-            //    builder => builder.EnableRetryOnFailure());
+               //builder => builder.EnableRetryOnFailure());
             optionsBuilder.UseSqlServer(@"Server=ETR-LT168\SQLEXPRESS;Database=eCademiaAppDB;Trusted_Connection=true",
                 builder => builder.EnableRetryOnFailure());
         }

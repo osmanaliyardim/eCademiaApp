@@ -15,6 +15,7 @@ namespace eCademiaApp.Business.Abstract
         IDataResult<List<CourseDetailDto>> GetCoursesByInstructorId(int instructorId);
 
         IDataResult<List<CourseDetailDto>> GetCourseDetails();
+        IDataResult<List<CourseDetailDto>> GetCourseDetailsById(int id);
 
         IResult Add(Course course);
         IResult Update(Course course);
