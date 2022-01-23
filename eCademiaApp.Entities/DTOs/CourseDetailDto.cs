@@ -16,5 +16,6 @@ namespace eCademiaApp.Entities.DTOs
         public decimal Price { get; set; }
         public decimal SalePrice { get; set; }
         public double Point { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 }

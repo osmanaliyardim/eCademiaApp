@@ -86,9 +86,10 @@ namespace eCademiaApp.WebAPI.Controllers
         /// <summary>This method returns specific courses by typeId.</summary>
         /// <param name="typeId">type id</param>
         [HttpGet("getCoursesByTypeId")]
-        public IActionResult GetCoursesByTypeId(int typeId)
+        public IActionResult GetCoursesByTypeId(int typeId, int pageNumber)
         {
-            var result = _courseService.GetCoursesByTypeId(typeId);
+            _paginationParameters.PageNumber = pageNumber;
+            var result = _courseService.GetCoursesByTypeId(typeId, _paginationParameters);
             if (result.Success) return Ok(result);
 
             return BadRequest(result.Message);

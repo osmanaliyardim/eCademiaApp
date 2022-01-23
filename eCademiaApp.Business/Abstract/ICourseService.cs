@@ -11,7 +11,7 @@ namespace eCademiaApp.Business.Abstract
         IDataResult<Course> GetById(int id);
         IDataResult<List<Course>> GetAll();
         IDataResult<List<Course>> GetAllWithPagination(PaginationParameters paginationParameters);
-        IDataResult<List<CourseDetailDto>> GetCoursesByTypeId(int typeId);
+        IDataResult<List<CourseDetailDto>> GetCoursesByTypeId(int typeId, PaginationParameters paginationParameters);
         IDataResult<List<CourseDetailDto>> GetCoursesByInstructorId(int instructorId);
 
         IDataResult<List<CourseDetailDto>> GetCourseDetails();
