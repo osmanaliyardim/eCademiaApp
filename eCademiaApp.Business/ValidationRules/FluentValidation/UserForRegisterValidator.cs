@@ -16,7 +16,7 @@ namespace eCademiaApp.Business.ValidationRules.FluentValidation
                 .Matches(@"[A-Z]+").WithMessage("Your password must contain at least one uppercase letter.")
                 .Matches(@"[a-z]+").WithMessage("Your password must contain at least one lowercase letter.")
                 .Matches(@"[0-9]+").WithMessage("Your password must contain at least one number.")
-                .Matches(@"[\!\?\*\.]+").WithMessage("Your password must contain at least one special character (!? *.).");
+                .Matches(@"[\!\$\%\&\?\+\@\*\.]+").WithMessage("Your password must contain at least one special character (!? *.).");
             RuleFor(u => u.Repassword).NotNull().WithMessage("Repassword can not be empty.")
                 .Equal(u => u.Password).WithMessage("Passwords do not match.");
             RuleFor(u => u.FirstName).NotEmpty().WithMessage("Firstname can not be empty")
