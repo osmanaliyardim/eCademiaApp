@@ -39,7 +39,8 @@ namespace eCademiaApp.DataAccess.Concrete.EntityFramework
                                  ImagePath = m.ImagePath,
                                  Price = c.Price,
                                  SalePrice = c.SalePrice,
-                                 Point = c.Point
+                                 Point = c.Point,
+                                 CreationDate = c.CreationDate
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
             }

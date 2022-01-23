@@ -92,9 +92,11 @@ namespace eCademiaApp.Business.Concrete
         /// <summary>This method returns a specific course with type id.</summary>
         /// <param name="typeId">type id</param>
         //[CacheAspect]
-        public IDataResult<List<CourseDetailDto>> GetCoursesByTypeId(int typeId)
+        public IDataResult<List<CourseDetailDto>> GetCoursesByTypeId(int typeId, PaginationParameters paginationParameters)
         {
-            return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetails(i => i.CourseTypeId == typeId));
+            return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetails(i => i.CourseTypeId == typeId).OrderBy(c => c.Name)
+                .Skip((paginationParameters.PageNumber - 1) * paginationParameters.PageSize)
+                .Take(paginationParameters.PageSize).ToList());
         }
 
         /// <summary>This method updates a specific new course from DB.</summary>
